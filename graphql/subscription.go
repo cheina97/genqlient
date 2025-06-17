@@ -48,7 +48,7 @@ func (s *subscriptionMap) Unsubscribe(subscriptionID string) error {
 	unsub.hasBeenUnsubscribed = true
 	s.map_[subscriptionID] = unsub
 
-	if hasBeenUnsubscribed {
+	if !hasBeenUnsubscribed {
 		reflect.ValueOf(s.map_[subscriptionID].interfaceChan).Close()
 	}
 	return nil
